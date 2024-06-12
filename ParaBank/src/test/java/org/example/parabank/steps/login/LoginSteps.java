@@ -43,7 +43,9 @@ public class LoginSteps {
 
     @Then("user is not logged in")
     public void userIsNotLoggedIn() {
-        assertThat(driver.getTitle()).contains("Error!");
+        String actualText = homePage.isTextPresent();
+        String expectedText = "The username and password could not be verified.";
+        assertThat(actualText).contains(expectedText);
     }
 
 }

@@ -24,4 +24,9 @@ public class HomePage extends BasePage{
         WebElement loginButton = driver.findElement(By.xpath("//input[@type=\"submit\"]"));
         loginButton.click();
     }
+
+    public String isTextPresent(){
+        WebElement text = driver.findElement(By.xpath("//p[contains(@class, 'error')]"));
+        return text.getText();
+    }
 }
