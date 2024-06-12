@@ -7,6 +7,7 @@ import org.example.parabank.hooks.Hooks;
 import org.example.parabank.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.example.LoggerUtils.getLogger;
 
 public class LoginSteps {
@@ -30,6 +31,18 @@ public class LoginSteps {
 
     @Then("user is logged in")
     public void userIsLoggedIn(){
+        assertThat(driver.getTitle()).contains("ParaBank | Accounts Overview");
     }
 
+    @When("user enters invalid credentials {string} {string}")
+    public void userEntersInvalidCredentials(String username, String password) {
+        homePage.enterUsername(username);
+        homePage.enterPassword(password);
+        homePage.clickLogIn();
+    }
+
+    @Then("user is not logged in")
+    public void userIsNotLoggedIn() {
+        assertThat(driver.getTitle()).contains("Error!");
+    }
 }

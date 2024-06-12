@@ -20,14 +20,10 @@ public class Hooks {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
-    @After
-    public void tearDown(){
-        if (driver != null){
-            driver.quit();
-        }
-    }
-
-//    public static WebDriver getDriver() {
-//        return driver;
+//    @After
+//    public void tearDown(){
+//        if (driver != null){
+//            driver.quit();
+//        }
 //    }
 }
