@@ -6,12 +6,10 @@ import io.cucumber.java.en.When;
 import org.example.parabank.hooks.Hooks;
 import org.example.parabank.pages.HomePage;
 import org.example.parabank.pages.RegisterPage;
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.example.LoggerUtils.getLogger;
+import static org.example.parabank.utils.LoggerUtils.getLogger;
 
 public class RegisterSteps {
     private WebDriver driver = Hooks.driver;
@@ -19,7 +17,7 @@ public class RegisterSteps {
     private RegisterPage registerPage;
     private HomePage homePage;
 
-    @Given("user is on the ParaBank's registering page")
+    @Given("user is on the ParaBank registration page")
     public void userIsOnTheParaBankSRegisteringPage() {
         getLogger().info("Start test");
         driver.get(URL);

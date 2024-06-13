@@ -8,7 +8,7 @@ import org.example.parabank.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.example.LoggerUtils.getLogger;
+import static org.example.parabank.utils.LoggerUtils.getLogger;
 
 public class LoginSteps {
     private WebDriver driver = Hooks.driver;

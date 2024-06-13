@@ -9,7 +9,7 @@ Feature: ParaBank Login
       | username      | password      |
       | validUsername | validPassword |
 
-  Scenario Outline: Unsuccessfully login
+  Scenario Outline: Unsuccessful Login with invalid credentials
     Given user is on the ParaBank login page
     When user enters invalid credentials "<username>" "<password>"
     Then user is not logged in
