@@ -7,4 +7,4 @@ Feature: ParaBank Register
 
     Examples:
       | address  | city   | state | zipCode | phone      | ssn    | password      |
-      | Str. xyz | Cancun | Mexic | 123321  | 0712345678 | 112233 | validPassword |
+      | Str. xyz | Cancun | Mexico | 123321  | 0712345678 | 112233 | validPassword |

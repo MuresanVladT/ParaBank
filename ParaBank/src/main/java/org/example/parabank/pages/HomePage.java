@@ -10,6 +10,11 @@ public class HomePage extends BasePage{
         super(driver);
     }
 
+    public void clickRegisterLink(){
+        WebElement registerLink = driver.findElement(By.xpath("//a[contains(@href, \"register.htm\")]"));
+        registerLink.click();
+    }
+
     public void enterUsername(String username){
         WebElement usernameField = driver.findElement(By.xpath("//input[@name=\"username\"]"));
         usernameField.sendKeys(username);

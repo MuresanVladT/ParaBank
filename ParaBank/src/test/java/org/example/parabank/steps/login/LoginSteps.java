@@ -46,7 +46,6 @@ public class LoginSteps {
         String actualText = homePage.isTextPresent();
         String expectedText = "The username and password could not be verified.";
         assertThat(actualText).contains(expectedText);
+
     }
-
 }
-

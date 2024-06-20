@@ -71,11 +71,6 @@ public class RegisterPage extends BasePage{
         registerButton.click();
     }
 
-    public void clickRegisterLink(){
-        WebElement registerLink = driver.findElement(By.xpath("//a[contains(@href, \"register.htm\")]"));
-        registerLink.click();
-    }
-
     public static String generateUniqueUsername(){
         return "user" + new Date().getTime();
     }

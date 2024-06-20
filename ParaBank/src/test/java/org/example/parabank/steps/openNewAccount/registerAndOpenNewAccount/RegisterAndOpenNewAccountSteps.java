@@ -1,18 +1,23 @@
-package org.example.parabank.steps.register;
+package org.example.parabank.steps.openNewAccount.registerAndOpenNewAccount;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.parabank.hooks.Hooks;
 import org.example.parabank.pages.HomePage;
+import org.example.parabank.pages.OpenNewAccountPage;
 import org.example.parabank.pages.RegisterPage;
 import org.openqa.selenium.WebDriver;
 
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.example.parabank.utils.LoggerUtils.getLogger;
 
-public class RegisterSteps {
+public class RegisterAndOpenNewAccountSteps {
     private WebDriver driver = Hooks.driver;
     private String URL = "https://parabank.parasoft.com/parabank/index.htm?ConnType=JDBC";
+    private String accountNumber;
+    private OpenNewAccountPage openNewAccountPage;
     private RegisterPage registerPage;
     private HomePage homePage;
 
@@ -46,7 +51,29 @@ public class RegisterSteps {
     public void userIsRegistered() {
         String actualText = registerPage.isTextPresent();
         String expectedText = "Your account was created successfully. You are now logged in.";
-        // assertThat(actualText).contains(expectedText);
+         //assertThat(actualText).contains(expectedText);
 
     }
+
+    @Given("user is on the ParaBank openNewAccount page")
+    public void userIsOnTheParaBankOpenNewAccountPage() {
+        openNewAccountPage = new OpenNewAccountPage(driver);
+        openNewAccountPage.clickOnOpenNewAccountLink();
+    }
+
+    @When("the user selects an account type {string}")
+    public void theUserSelectsAnAccountType(String accountType) {
+        openNewAccountPage.selectTypeOfAccount(accountType);
+    }
+
+    @And("selects the account from where to transfer money and open new account")
+    public void selectsTheAccountFromWhereToTransferMoneyAndOpenNewAccount() {
+        openNewAccountPage.selectFromWhatAccountToTransferMoney(accountNumber);
+    }
+
+    @Then("user creates a new account")
+    public void userCreatesANewAccount() {
+    }
+
+
 }
