@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.example.parabank.utils.LoggerUtils.getLogger;
+import static org.junit.Assert.assertEquals;
 
 public class OpenNewAccountSteps {
     private WebDriver driver = Hooks.driver;
@@ -33,11 +34,13 @@ public class OpenNewAccountSteps {
     @And("selects the account from where to transfer money and open new account {string}")
     public void selectsTheAccountFromWhereToTransferMoneyAndOpenNewAccount(String transferAccount) {
         openNewAccountPage.selectFromWhatAccountToTransferMoney(transferAccount);
+        openNewAccountPage.clickOpenNewAccount();
     }
 
-    @Then("user creates a new account")
-    public void userCreatesANewAccount() {
+    @Then("user creates a new account, the page title should be {string}")
+    public void userCreatesANewAccountThePageTitleShouldBe(String expectedTitle) {
+        String actualTitle = openNewAccountPage.getPageTitle();
+        assertEquals(expectedTitle, actualTitle);
     }
-
 
 }

@@ -8,6 +8,7 @@ import org.example.parabank.pages.HomePage;
 import org.example.parabank.pages.RegisterPage;
 import org.openqa.selenium.WebDriver;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.example.parabank.utils.LoggerUtils.getLogger;
 
 public class RegisterSteps {
@@ -46,7 +47,7 @@ public class RegisterSteps {
     public void userIsRegistered() {
         String actualText = registerPage.isTextPresent();
         String expectedText = "Your account was created successfully. You are now logged in.";
-        // assertThat(actualText).contains(expectedText);
+        assertThat(actualText).contains(expectedText);
 
     }
 }

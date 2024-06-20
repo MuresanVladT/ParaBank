@@ -4,14 +4,16 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.assertj.core.api.Assertions;
 import org.example.parabank.hooks.Hooks;
 import org.example.parabank.pages.HomePage;
 import org.example.parabank.pages.OpenNewAccountPage;
 import org.example.parabank.pages.RegisterPage;
 import org.openqa.selenium.WebDriver;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.example.parabank.utils.LoggerUtils.getLogger;
+import static org.junit.Assert.assertEquals;
 
 public class RegisterAndOpenNewAccountSteps {
     private WebDriver driver = Hooks.driver;
@@ -51,7 +53,7 @@ public class RegisterAndOpenNewAccountSteps {
     public void userIsRegistered() {
         String actualText = registerPage.isTextPresent();
         String expectedText = "Your account was created successfully. You are now logged in.";
-         //assertThat(actualText).contains(expectedText);
+        assertThat(actualText).contains(expectedText);
 
     }
 
@@ -69,11 +71,19 @@ public class RegisterAndOpenNewAccountSteps {
     @And("selects the account from where to transfer money and open new account")
     public void selectsTheAccountFromWhereToTransferMoneyAndOpenNewAccount() {
         openNewAccountPage.selectFromWhatAccountToTransferMoney(accountNumber);
+        openNewAccountPage.clickOpenNewAccount();
     }
 
     @Then("user creates a new account")
     public void userCreatesANewAccount() {
+        String actualText = openNewAccountPage.isTextPresent();
+        String expectedText = "Account Opened!";
+        Assertions.assertThat(actualText).contains(expectedText);
     }
 
-
+    @Then("user creates a new account, the page title should be {string}")
+    public void userCreatesANewAccountThePageTitleShouldBe(String expectedTitle) {
+        String actualTitle = openNewAccountPage.getPageTitle();
+        assertEquals(expectedTitle, actualTitle);
+    }
 }
