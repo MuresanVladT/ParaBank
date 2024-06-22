@@ -1,4 +1,4 @@
-package org.example.parabank;
+package org.example.parabank.runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;

@@ -1,4 +1,4 @@
-package org.example.parabank.steps.openNewAccount.registerAndOpenNewAccount;
+package org.example.parabank.steps.opennewaccount.registerAndOpenNewAccount;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -48,13 +48,11 @@ public class RegisterAndOpenNewAccountSteps {
         registerPage.clickRegisterButton();
     }
 
-
     @Then("user is registered")
     public void userIsRegistered() {
         String actualText = registerPage.isTextPresent();
         String expectedText = "Your account was created successfully. You are now logged in.";
         assertThat(actualText).contains(expectedText);
-
     }
 
     @Given("user is on the ParaBank openNewAccount page")

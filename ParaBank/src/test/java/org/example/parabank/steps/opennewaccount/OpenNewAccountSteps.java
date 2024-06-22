@@ -1,4 +1,4 @@
-package org.example.parabank.steps.openNewAccount;
+package org.example.parabank.steps.opennewaccount;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -8,7 +8,6 @@ import org.example.parabank.hooks.Hooks;
 import org.example.parabank.pages.OpenNewAccountPage;
 import org.openqa.selenium.WebDriver;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.example.parabank.utils.LoggerUtils.getLogger;
 import static org.junit.Assert.assertEquals;
 

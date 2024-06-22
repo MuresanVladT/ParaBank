@@ -10,21 +10,22 @@ public class OpenNewAccountPage extends BasePage {
         super(driver);
     }
 
+
     public void clickOnOpenNewAccountLink() {
         WebElement openNewAccountLink = driver.findElement(By.xpath("//*[@href=\"openaccount.htm\"]"));
         openNewAccountLink.click();
     }
 
-    public void selectTypeOfAccount(String text) {
+    public void selectTypeOfAccount(String typeAccount) {
         WebElement accountType = driver.findElement(By.xpath("//select[@id='type']"));
         Select select = new Select(accountType);
-        select.selectByVisibleText(text);
+        select.selectByVisibleText(typeAccount);
     }
 
-    public void selectFromWhatAccountToTransferMoney(String text) {
+    public void selectFromWhatAccountToTransferMoney(String fromAccount) {
         WebElement transferAccount = driver.findElement(By.xpath("//select[@id='fromAccountId']"));
-        Select select = new Select(transferAccount);
-        select.getFirstSelectedOption();
+        Select selectFromAccount = new Select(transferAccount);
+        selectFromAccount.getFirstSelectedOption();
     }
 
     public void clickOpenNewAccount() {
@@ -36,8 +37,17 @@ public class OpenNewAccountPage extends BasePage {
         return driver.getTitle();
     }
 
+    public void waitForTitle() {
+        WebElement title = seleniumUtils.waitForElementToBeClickable(By.xpath("//a[@id='newAccountId']"));
+    }
+
     public String isTextPresent() {
         WebElement text = driver.findElement(By.xpath("//*[@id='openAccountResult']/h1[1]"));
         return text.getText();
+    }
+
+    public String getNewAccountNumber() {
+        WebElement newAccountNumber = seleniumUtils.waitForElementToBeVisible(By.xpath("//a[@id='newAccountId']"));
+        return newAccountNumber.getText();
     }
 }
